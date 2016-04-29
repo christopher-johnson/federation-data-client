@@ -1,5 +1,6 @@
+.idea/
 node_modules
 *.log
 build
-deps/ldf-client-browser.js
+src/ldf-client-browser.js
 queries.json

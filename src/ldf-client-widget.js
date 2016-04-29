@@ -62,6 +62,7 @@ var jQuery = require('jquery');
           $query = this.$query = $('.queryText', $element),
           $queries = this.$queries = $('.query', $element),
           $results = this.$results = $('.results', $element),
+          $raw = this.$raw = $('.raw', $element),
           $datasources = this.$datasources = $('.datasources', $element);
 
       // Replace non-existing elements by an empty text box
@@ -194,11 +195,13 @@ var jQuery = require('jquery');
 
       // Clear results and log, and scroll page to the results
       var $results = this.$results, $log = this.$log;
+      var $raw = this.$raw;
       $('html,body').animate({ scrollTop: this.$start.offset().top });
       this.$stop.show();
       this.$start.hide();
       $log.empty();
       $results.empty();
+      $raw.empty();
 
       // Create a client to fetch the fragments through HTTP
       var config = { prefixes: this.options.prefixes, logger: this._logger };
@@ -222,6 +225,7 @@ var jQuery = require('jquery');
             var lines = [];
             $.each(row, function (k, v) { if (v !== undefined) lines.push(k + ': ' + v); });
             appendText($results, lines.join('\n'), '\n\n');
+            appendRawResult($raw, row);
           });
           resultsIterator.on('end', function () {
             resultCount || appendText($results, '(This query has no results.)');
@@ -252,7 +256,7 @@ var jQuery = require('jquery');
       this._resultsIterator && this._resultsIterator.removeAllListeners();
       ldf.HttpClient.abortAll && ldf.HttpClient.abortAll();
       error && error.message && this.$results.text(error.message);
-    },
+    }
   });
 
   // Appends text to the given element
@@ -266,6 +270,22 @@ var jQuery = require('jquery');
   function escape(match, lt, gt, amp, url) {
     return lt && '&lt;' || gt && '&gt;' || amp && '&amp;' ||
            $('<a>', { href: url, target: '_blank', text: url })[0].outerHTML;
+  }
+
+  // make raw JSON
+  function appendRawResult($element, row) {
+    var rows = [];
+    rows.push(row);
+    var json = JSON.stringify(rows);
+    var out = json.substring(1, json.length-1);
+    $element.append(out + ',\n');
+    $element.scrollTop(1E10);
+  }
+
+  // Escapes special HTML characters and convert URLs into links
+  function escape(match, lt, gt, amp, url) {
+    return lt && '&lt;' || gt && '&gt;' || amp && '&amp;' ||
+        $('<a>', { href: url, target: '_blank', text: url })[0].outerHTML;
   }
 
   // Converts the array to a hash with the elements as keys
