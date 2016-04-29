@@ -3,26 +3,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Linked Data Fragments client</title>
-  <script src="deps/jquery-2.1.0.js"></script>
-  <script src="deps/chosen-1.1.0.js"></script>
+  <title>Federation Data Client</title>
   <script src="deps/ldf-client-browser.js"></script>
-  <script src="ldf-client-jquery.js"></script>
-  <script src="ldf-client-jquery-url.js"></script>
-  <script>
-    jQuery(function ($) {
-      $('.ldf-client').queryui({ settings: 'queries.json' });
-    });
-  </script>
-  <link rel=stylesheet href="ldf-client.css">
+  <script src="deps/jquery-2.1.0.js"></script>
+  <script src="dist/fed-data-client.min.js"></script>
+  <link rel=stylesheet href="dist/fed-data-client.min.css">
   <link rel=stylesheet href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700">
   <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 </head>
 <body>
-  <header>
-    <h1><a href="#">Federation Data Client</a></h1>
-  </header>
   <!--[if lte IE 9]><b>Your browser is unsupported.</b><div style="display:none"><![endif]-->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Federation Data Service</a>
+      </div>
+    </div>
+  </nav>
   <main>
     <fieldset class="ldf-client">
       <ul>

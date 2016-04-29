@@ -1,0 +1,11 @@
+# 10030. Compare statements of Charles Darwin
+# Datasources: http://orbeon-bb.wmflabs.org/wdqs-sparl http://orbeon-bb.wmflabs.org/wdqs-sitelinks http://orbeon-bb.wmflabs.org/dbpedia-sparql
+
+SELECT * WHERE {
+?s foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Charles_Darwin> .
+OPTIONAL {?s dbo:abstract ?abstract FILTER (lang(?abstract) = "en")} .
+OPTIONAL {?s schema:description ?desc FILTER (lang(?desc) = "en")}.
+OPTIONAL {?s foaf:depiction ?altimage }.
+OPTIONAL {?s wdt:P18 ?image}.
+}
+

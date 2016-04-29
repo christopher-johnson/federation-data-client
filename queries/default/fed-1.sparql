@@ -1,0 +1,10 @@
+# 10020. Compare taxons and subclasses of family Leporidae
+# Datasources: http://orbeon-bb.wmflabs.org/wdqs-sparl http://orbeon-bb.wmflabs.org/wdqs-sitelinks http://orbeon-bb.wmflabs.org/dbpedia-sparql
+
+SELECT DISTINCT ?dbr ?wde ?o1 ?o2 ?dbplabel ?wdlabel WHERE {
+?s foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Leporidae> .
+{{?wde rdfs:subClassOf ?s ; rdfs:label ?wdlabel FILTER (lang(?wdlabel) = "en") .
+OPTIONAL {?wde foaf:isPrimaryTopicOf ?o2 FILTER regex (?o2, "^http://en.wikipedia.org/wiki/") }}
+UNION {?dbr dbo:family ?s ; rdfs:label ?dbplabel FILTER (lang(?dbplabel) = "en") .
+OPTIONAL {?dbr foaf:isPrimaryTopicOf ?o1 FILTER regex (?o1, "^http://en.wikipedia.org/wiki/")} }}
+}

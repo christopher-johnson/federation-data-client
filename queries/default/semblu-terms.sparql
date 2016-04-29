@@ -1,0 +1,9 @@
+# 10040 Terms from Semantic Blumenbach
+#Datasources: http://orbeon-bb.wmflabs.org/semblu
+#Datasources: http://orbeon-bb.wmflabs.org/semblu
+
+PREFIX semblu: <http://dhfv-ent2.gcdh.de/semantic-blumenbach/ontology.owl#>
+PREFIX ecrm: <http://erlangen-crm.org/120111/>
+
+select * where {?s a semblu:E33_term;
+ecrm:P3_has_note ?term} LIMIT 500
