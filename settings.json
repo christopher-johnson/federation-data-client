@@ -1,20 +1,20 @@
 {
   "datasources": [
     {
-      "name": "DBpedia 2015",
-      "url": "http://fragments.dbpedia.org/2015/en"
+      "name": "DBpedia",
+      "url": "http://orbeon-bb.wmflabs.org/dbpedia-sparql"
     },
     {
-      "name": "DBpedia 2014",
-      "url": "http://fragments.dbpedia.org/2014/en"
+      "name": "Wikidata",
+      "url": "http://orbeon-bb.wmflabs.org/wdqs-sparql"
     },
     {
-      "name": "Ghent University Academic Bibliography",
-      "url": "http://data.linkeddatafragments.org/ugent-biblio"
+      "name": "Wikidata English Sitelinks",
+      "url": "http://orbeon-bb.wmflabs.org/wdqs-sitelinks"
     },
     {
-      "name": "Linked Open Vocabularies",
-      "url": "http://data.linkeddatafragments.org/lov"
+      "name": "Semantic Blumenbach",
+      "url": "http://orbeon-bb.wmflabs.org/semblu"
     },
     {
       "name": "Virtual International Authority File (VIAF)",
@@ -29,10 +29,12 @@
     "xsd":         "http://www.w3.org/2001/XMLSchema#",
     "dc":          "http://purl.org/dc/terms/",
     "foaf":        "http://xmlns.com/foaf/0.1/",
-    "dbpedia":     "http://dbpedia.org/resource/",
-    "dbpedia-owl": "http://dbpedia.org/ontology/",
-    "dbpprop":     "http://dbpedia.org/property/",
-    "schema":      "http://schema.org/"
+    "dbr":     "http://dbpedia.org/resource/",
+    "dbo": "http://dbpedia.org/ontology/",
+    "dbp":     "http://dbpedia.org/property/",
+    "schema":      "http://schema.org/",
+    "wd":          "http://www.wikidata.org/entity/",
+    "wdt":         "http://www.wikidata.org/prop/direct/"
   },
   "queries": "(Will be generated from the 'queries' folder by running the './queries-to-json' script.)"
 }
